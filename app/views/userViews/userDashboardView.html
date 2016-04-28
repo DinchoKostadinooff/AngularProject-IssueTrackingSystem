@@ -1,0 +1,32 @@
+<div class="col-md-10 col-lg-offset-2">
+    <div id="projects" class="col-md-5">
+        <div id="led" class="col-md-10">
+            <h3>Led Projects</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="project in controller.myProjects">
+                    <a href="#/projects/{{ project.Id }}">{{ project.Name }}</a>
+                </li>
+            </ul>
+        </div>
+        <div id="assigned" class="col-md-10">
+            <h3>Assigned Projects</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="project in controller.projects">
+                    <a href="#/projects/{{ project.Id }}">{{ project.Name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="issues" class="col-md-5">
+        <h3>Assigned Issues</h3>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="issue in controller.issues">
+                <a href="#/issues/{{ issue.Id }}">{{ issue.Title }}</a>
+            </li>
+        </ul>
+    </div>
+    <div id="admin-options" ng-show="isAdmin" class="col-md-10 col-lg-offset-3">
+        <a href="#/projects" class="btn btn-primary">List Projects</a>
+        <a href="#/projects/add" class="btn btn-primary">Add Project</a>
+    </div>
+</div>

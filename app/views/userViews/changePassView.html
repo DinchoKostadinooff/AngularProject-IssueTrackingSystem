@@ -1,0 +1,25 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Change Password</h2>
+    <hr>
+    <form name="form" ng-submit="controller.changePassword()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.old_password.$dirty && form.old_password.$error.required }">
+            <label for="old_password">Old Password</label>
+            <input type="password" name="old_password" id="old_password" class="form-control" ng-model="controller.user.old_password" required />
+            <span ng-show="form.old_password.$dirty && form.old_password.$error.required" class="help-block">Old password is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.new_password.$dirty && form.new_password.$error.required }">
+            <label for="new_password">New Password</label>
+            <input type="password" name="new_password" id="new_password" class="form-control" ng-model="controller.user.new_password" required />
+            <span ng-show="form.new_password.$dirty && form.new_password.$error.required" class="help-block">New Password is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': (controller.user.password != controller.user.confirm_password) && form.confirm_password.$error.required }">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" id="confirm_password" class="form-control" ng-model="controller.user.confirm_password" required />
+            <span ng-show="(controller.user.password != controller.user.confirm_password) && form.confirm_password.$error.required" class="help-block">Passwords must match</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || controller.dataLoading" class="btn btn-warning">Change Password</button>
+            <a href="#/" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>
