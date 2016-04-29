@@ -1,18 +1,18 @@
 app.factory('AuthCheck', [function() {
-    function isLoggedIn() {
+
+    function checkIsAdmin() {
+        if (!sessionStorage.getItem('token')) {
+            return false;
+        }
+        return sessionStorage.getItem('checkIsAdmin');
+    }
+    function checkIsLoggedIn() {
 		return sessionStorage.getItem('token');
     }
 
-    function isAdmin() {
-    	if (!sessionStorage.getItem('token')) {
-    		return false;
-    	}
-
-    	return sessionStorage.getItem('isAdmin');
-    }
 
     return {
-    	isLoggedIn: isLoggedIn,
-    	isAdmin: isAdmin
+    	isAdmin: checkIsAdmin,
+        isLoggedIn: checkIsLoggedIn
     }
 }]);

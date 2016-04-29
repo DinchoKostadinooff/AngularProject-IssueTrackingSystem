@@ -1,4 +1,4 @@
-app.factory('AuthenticationService', ['NotificationsManager', '$http', '$cookieStore', '$rootScope', '$location', function(NotificationsManager, $http, $cookieStore, $rootScope, $location) {
+app.factory('AuthService', ['NotificationsManager', '$http', '$cookieStore', '$rootScope', '$location', function(NotificationsManager, $http, $cookieStore, $rootScope, $location) {
     var service = {};
 
     service.Login = Login;

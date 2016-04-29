@@ -1,7 +1,7 @@
-app.controller('LogoutController', ['AuthenticationService', function(AuthenticationService) {
-    var controller = this;
-    controller.logout = logout;
-    controller.logout();
+app.controller('LogoutCtrl', ['AuthService', function(AuthenticationService) {
+    var ctrl = this;
+    ctrl.logout = logout;
+    ctrl.logout();
 
     function logout() {
         AuthenticationService.Logout();

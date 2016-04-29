@@ -12,7 +12,6 @@
     margin:5px;
     text-align: center;
 
-
 }
 h2{
     color:darkblue;
@@ -31,3 +30,9 @@ h2{
     text-align: center;
 
 }
+.help-block{
+    background-color:pink;
+    border-radius: 10px;
+    color:darkblue;
+}
+

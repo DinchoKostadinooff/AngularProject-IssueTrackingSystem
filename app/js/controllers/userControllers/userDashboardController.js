@@ -1,4 +1,4 @@
-app.controller('UserDashboardController', ['UserServices', 'IssuesServices', 'AuthenticationService', 'ProjectServices', function (UserServices, IssuesServices, AuthenticationService, ProjectServices) {
+app.controller('UserDashboardController', ['UserServices', 'IssuesServices', 'AuthService', 'ProjectServices', function (UserServices, IssuesServices, AuthenticationService, ProjectServices) {
     var controller = this;
     controller.issues = [];
     controller.projects = [];

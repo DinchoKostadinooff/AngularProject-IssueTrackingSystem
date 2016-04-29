@@ -1,14 +1,14 @@
-app.controller('ChangePasswordController', ['UserServices', 'NotificationsManager', '$location', function (UserServices, NotificationsManager, $location) {
-    var controller = this;
-    controller.changePassword = changePassword;
+app.controller('ChangePasswordCtrl', ['UserServices', 'NotificationsManager', '$location', function (UserServices, NotificationsManager, $location) {
+    var ctrl = this;
+    ctrl.changePassword = changePassword;
 
     function changePassword() {
-        controller.dataLoading = true;
+        ctrl.dataLoading = true;
 
         var passwords = {
-            OldPassword: controller.user.old_password,
-            NewPassword: controller.user.new_password,
-            ConfirmPassword: controller.user.confirm_password
+            OldPassword: ctrl.user.old_password,
+            NewPassword: ctrl.user.new_password,
+            ConfirmPassword: ctrl.user.confirm_password
         };
 
         UserServices.ChangePassword(passwords)

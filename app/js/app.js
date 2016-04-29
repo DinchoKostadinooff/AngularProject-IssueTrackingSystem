@@ -7,7 +7,7 @@ app.config(function ($routeProvider) {
             templateUrl: "views/sharedViews/home.html"
         })
         .when('/login', {
-            controller: 'LoginController',
+            controller: 'LoginCtrl',
             templateUrl: 'views/userViews/loginView.html',
             controllerAs: 'controller',
             access: {
@@ -16,7 +16,7 @@ app.config(function ($routeProvider) {
             }
         })
         .when('/register', {
-            controller: 'RegisterController',
+            controller: 'RegisterCtrl',
             templateUrl: 'views/userViews/registerView.html',
             controllerAs: 'controller',
             access: {
@@ -34,7 +34,7 @@ app.config(function ($routeProvider) {
             }
         })
         .when('/profile/password', {
-            controller: 'ChangePasswordController',
+            controller: 'ChangePasswordCtrl',
             templateUrl: 'views/userViews/changePassView.html',
             controllerAs: 'controller',
             access: {
@@ -107,7 +107,7 @@ app.config(function ($routeProvider) {
         })
         .when('/logout', {
             resolve: {
-                logout: ['AuthenticationService', function (AuthenticationService) {
+                logout: ['AuthService', function (AuthenticationService) {
                     AuthenticationService.Logout();
                 }]
             },

@@ -1,18 +1,18 @@
-app.controller('RegisterController', ['UserServices', 'AuthenticationService', 'NotificationsManager', function (UserServices, AuthenticationService, NotificationsManager) {
-    var controller = this;
-    controller.register = register;
+app.controller('RegisterCtrl', ['UserServices', 'AuthService', 'NotificationsManager', function (UserServices, AuthenticationService, NotificationsManager) {
+    var ctrl = this;
+    ctrl.register = register;
 
     function register() {
-        controller.dataLoading = true;
-        var userForRegister = {
-            Email: controller.user.email,
-            Password: controller.user.password,
-            ConfirmPassword: controller.user.confirm_password
+        ctrl.dataLoading = true;
+        var dataForRegistration = {
+            Email: ctrl.user.email,
+            Password: ctrl.user.password,
+            ConfirmPassword: ctrl.user.confirm_password
         };
 
-        UserServices.Create(userForRegister).then(function() {
+        UserServices.Create(dataForRegistration).then(function() {
                // NotificationsManager.showSuccessNotification('Registration successful!');
-            AuthenticationService.Login(userForRegister.Email, userForRegister.Password);
+            AuthenticationService.Login(dataForRegistration.Email, dataForRegistration.Password);
         }, function() {
                // NotificationsManager.showErrorNotification('Registration failed!');
             }
