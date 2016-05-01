@@ -26,7 +26,7 @@ app.config(function ($routeProvider) {
         })
         .when('/profile', {
             controller: 'UserDashboardController',
-            templateUrl: 'views/userViews/userDashboardView.html',
+            templateUrl: 'views/userViews/DashboardView.html',
             controllerAs: 'controller',
             access: {
                 loggedIn: true,
@@ -52,7 +52,7 @@ app.config(function ($routeProvider) {
             }
         })
         .when('/projects', {
-            controller: 'AllProjectsController',
+            controller: 'AllProjectsCtrl',
             templateUrl: 'views/projectViews/allProjectsView.html',
             controllerAs: 'controller',
             access: {

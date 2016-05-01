@@ -1,0 +1,12 @@
+<div class="col-md-10 col-md-offset-2">
+    <h2>Projects</h2>
+    <hr>
+    <div ng-repeat="project in controller.projects" class="project">
+        <a href="#/projects/{{project.Id}}" class="col-md-5">{{project.Name}}</a>
+        <div class="project-options" ng-show="isAdmin" class="col-md-5">
+            <a href="#/projects/{{project.Id}}/edit" class="btn btn-warning">Edit Project</a>
+            <a href="#/projects/{{project.Id}}/add-issue" class="btn btn-success">Add Issue</a>
+        </div>
+    </div>
+     <a href="#/projects/add"   class="btn btn-primary">Add Project</a>
+</div>

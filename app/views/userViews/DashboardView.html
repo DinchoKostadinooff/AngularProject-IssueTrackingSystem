@@ -1,0 +1,28 @@
+<div class="row">
+
+        <div id="led" class="col-sm-4">
+            <h3>Affiliated Projects</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="project in controller.myProjects">
+                    <a href="#/projects/{{ project.Id }}">{{ project.Name }}</a>
+                </li>
+            </ul>
+        </div>
+        <div id="issues"class="col-sm-4">
+            <h3>Assigned Issues</h3>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="issue in controller.issues">
+                    <a href="#/issues/{{ issue.Id }}">{{ issue.Title }}</a>
+                </li>
+            </ul>
+        </div>
+
+    <div id="assigned" class="col-sm-4">
+        <h3>Assigned Projects</h3>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="project in controller.projects">
+                <a href="#/projects/{{ project.Id }}">{{ project.Name }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
