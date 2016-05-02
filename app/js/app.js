@@ -62,7 +62,7 @@ app.config(function ($routeProvider) {
         })
         .when('/projects/:id', {
             controller: 'ProjectDetailsController',
-            templateUrl: 'views/projectViews/projectDetailsView.html',
+            templateUrl: 'views/projectViews/DetailsView.html',
             controllerAs: 'controller',
             access: {
                 loggedIn: true,

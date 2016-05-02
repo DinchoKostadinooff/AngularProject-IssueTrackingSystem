@@ -1,0 +1,36 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Edit Project</h2>
+    <hr>
+    <form name="form" ng-submit="controller.edit()" role="form">
+        <div class="form-group" ng-show="checkIsAdmin" ng-class="{ 'has-error': form.leader.$error.required }">
+            <label for="leader">Project Leader</label>
+            <select name="leader" id="leader" class="form-control" ng-model="controller.project.leader" required>
+                <option ng-repeat="user in controller.users" value="{{user.Id}}">{{user.Username}}</option>
+            </select>
+            <span ng-show="form.leader.$error.required" class="help-block">You need to choose a leader</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.labels.$error.required }">
+            <label for="labels">Labels</label>
+            <input type="text" name="labels" id="labels" class="form-control" ng-model="controller.project.labelsString" required />
+            <span ng-show="form.labels.$error.required" class="help-block">At least one label is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.priorities.$error.required }">
+            <label for="priorities">Priorities</label>
+            <input type="text" name="priorities" id="priorities" class="form-control" ng-model="controller.project.prioritiesString" required />
+            <span ng-show="form.priorities.$error.required" class="help-block">At least one priority is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.name.$error.required }">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" ng-model="controller.project.name" required />
+            <span ng-show="form.name.$error.required" class="help-block">Name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.description.$error.required }">
+            <label for="description">Description</label>
+            <textarea name="description" style="resize: vertical" id="description" class="form-control" ng-model="controller.project.description" required></textarea>
+            <span ng-show="form.description.$error.required" class="help-block">Description is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || controller.dataLoading" class="btn btn-primary">Edit Project</button>
+        </div>
+    </form>
+</div>

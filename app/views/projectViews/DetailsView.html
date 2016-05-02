@@ -1,0 +1,32 @@
+<div class="col-md-5 col-md-offset-4">
+    <h2>{{ controller.project.Name }}</h2>
+    <hr>
+    <h4>Project Key: {{ controller.project.ProjectKey }}</h4>
+
+        <p id="description" class="list-group-item">{{ controller.project.Description }}</p>
+
+
+    <div id="labels">
+        <ul class="list-group">
+            <li class="list-group-item disabled">Labels</li>
+            <li class="list-group-item" ng-repeat="label in controller.project.Labels">{{ label.Name }}</li>
+        </ul>
+    </ul>
+    </div>
+    <div id="priorities">
+        <ul class="list-group">
+            <li class="list-group-item disabled">Priorities</li>
+            <li class="list-group-item" ng-repeat="priority in controller.project.Priorities">{{ priority.Name }}</li>
+        </ul>
+    </div>
+    <div id="issues">
+        <ul class="list-group">
+            <li class="list-group-item disabled">Issues</li>
+            <li class="list-group-item" ng-repeat="issue in controller.issues"><a href="#/issues/{{ issue.Id }}">{{ issue.Title }}</a></li>
+        </ul>
+    </div>
+    <div ng-show="checkIsAdmin || controller.project.Lead.Id == userId" class="col-md-16">
+        <a href="#/projects/{{ controller.project.Id }}/edit" class="btn btn-primary">Edit Project</a>
+         <a href="#/projects/{{ controller.project.Id }}/add-issue" class="btn btn-primary">Add Issue</a>
+    </div>
+</div>
