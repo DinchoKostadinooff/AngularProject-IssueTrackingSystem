@@ -1,0 +1,26 @@
+<div class="col-md-5 col-md-offset-4">
+    <h2>{{ controller.issue.Title }}</h2>
+    <hr>
+    <div  id="descr" class="list-group-item">
+        <p>{{ controller.issue.Description }}</p>
+    </div>
+    <h4>Assignee: {{ controller.issue.Assignee.Username }}</h4>
+    <h4>Due Date: {{ controller.issue.DueDate }}</h4>
+    <h4>Priority: {{ controller.issue.Priority.Name }}</h4>
+    <h4>Status: {{ controller.issue.Status.Name }}</h4>
+    <div id="labels">
+        <ul class="list-group">
+            <li class="list-group-item disabled">Labels</li>
+            <li class="list-group-item" ng-repeat="label in controller.issue.Labels">{{ label.Name }}</li>
+        </ul>
+    </div>
+    <div id="comments">
+        <ul class="list-group">
+            <li class="list-group-item disabled">comments</li>
+            <li class="list-group-item" ng-repeat="comment in controller.comments">{{ comment.Text }}</li>
+        </ul>
+    </div>
+    <div ng-show="isAdmin || controller.project.Lead.Id == userId || controller.issue.Assignee.Id == userId" class="col-md-5">
+        <a href="#/issues/{{ controller.issue.Id }}/edit" class="btn btn-primary">Edit</a>
+    </div>
+</div>

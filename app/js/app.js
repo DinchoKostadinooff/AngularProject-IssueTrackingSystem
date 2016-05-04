@@ -89,7 +89,7 @@ app.config(function ($routeProvider) {
         })
         .when('/issues/:id', {
             controller: 'IssueDetailsController',
-            templateUrl: 'views/issueViews/issueDetailsView.html',
+            templateUrl: 'views/issueViews/DetailsView.html',
             controllerAs: 'controller',
             access: {
                 loggedIn: true,

@@ -70,7 +70,7 @@ h2{
 
 
 }
-#description{
+#description,#descr{
     padding: 30px;
     border-left: dashed 2px darkblue;
     border-right: dashed 2px darkblue;
