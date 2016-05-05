@@ -1,8 +1,8 @@
-app.controller('LoginCtrl', ['$location', 'AuthService', function($location, AuthenticationService) {
+app.controller('LoginCtrl', ['$location', 'AuthService', function($location, AuthService) {
     var ctrl = this;
     ctrl.login = login;
 
     function login() {
-        AuthenticationService.Login(ctrl.username, ctrl.password);
+        AuthService.Login(ctrl.username, ctrl.password);
     }
 }]);

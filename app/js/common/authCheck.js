@@ -12,7 +12,7 @@ app.factory('AuthCheck', [function() {
 
 
     return {
-    	isAdmin: checkIsAdmin,
-        isLoggedIn: checkIsLoggedIn
+    	checkIsAdmin: checkIsAdmin,
+        checkIsLoggedIn: checkIsLoggedIn
     }
 }]);

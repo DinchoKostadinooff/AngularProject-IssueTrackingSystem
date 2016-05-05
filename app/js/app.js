@@ -14,6 +14,7 @@ app.config(function ($routeProvider) {
                 loggedIn: false,
                 admin: false
             }
+
         })
         .when('/register', {
             controller: 'RegisterCtrl',
@@ -80,7 +81,7 @@ app.config(function ($routeProvider) {
         })
         .when('/projects/:id/add-issue', {
             controller: 'AddIssueController',
-            templateUrl: 'views/issueViews/addIssueView.html',
+            templateUrl: 'views/issueViews/addView.html',
             controllerAs: 'controller',
             access: {
                 loggedIn: true,
@@ -125,8 +126,8 @@ app.config(function ($routeProvider) {
 
 app.run(['$rootScope', '$location', 'AuthCheck', function($rootScope, $location, AuthCheck) {
     $rootScope.$on('$routeChangeStart', function(ev, next, current) {
-        var loggedIn = AuthCheck.isLoggedIn();
-        var isAdmin = AuthCheck.isAdmin() === 'true';
+        var loggedIn = AuthCheck.checkIsLoggedIn();
+        var isAdmin = AuthCheck.checkIsAdmin() === 'true';
         $rootScope.loggedIn = loggedIn;
         $rootScope.isAdmin = isAdmin;
         $rootScope.userId = sessionStorage.getItem('id');
