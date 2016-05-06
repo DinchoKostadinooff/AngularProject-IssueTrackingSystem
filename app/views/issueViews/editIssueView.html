@@ -1,0 +1,52 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Edit issue</h2>
+    <hr>
+    <form name="form" ng-submit="controller.edit()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.status.$error.required }">
+            <label for="status">Status</label>
+            <select name="status" id="status" class="form-control" ng-model="controller.issue.status" ng-required="!(isAdmin || controller.project.Lead.Id == userId)">
+                <option ng-repeat="issueStatus in controller.statuses" value="{{issueStatus.Id}}">{{issueStatus.Name}}</option>
+            </select>
+            <span ng-show="form.status.$error.required" class="help-block">Status is required</span>
+        </div>
+        <div ng-show="isAdmin || controller.project.Lead.Id == userId">
+            <div class="form-group" ng-class="{ 'has-error': form.assignee.$error.required }">
+                <label for="assignee">Issue Assignee</label>
+                <select name="assignee" id="assignee" class="form-control" ng-model="controller.issue.assignee" ng-required="isAdmin || controller.project.Lead.Id == userId">
+                    <option ng-repeat="user in controller.users" value="{{user.Id}}">{{user.Username}}</option>
+                </select>
+                <span ng-show="form.assignee.$error.required" class="help-block">Assignee is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.labels.$error.required }">
+                <label for="labels">Labels</label>
+                <input type="text" name="labels" id="labels" class="form-control" ng-model="controller.issue.labelsString" ng-required="isAdmin || controller.project.Lead.Id == userId" />
+                <span ng-show="form.labels.$error.required" class="help-block">At least one label is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.duedate.$error.required }">
+                <label for="duedate">Due Date</label>
+                <input type="date" name="duedate" id="duedate" class="form-control" ng-model="controller.issue.duedate" ng-required="isAdmin || controller.project.Lead.Id == userId" />
+                <span ng-show="form.duedate.$error.required" class="help-block">Due date is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.priority.$error.required }">
+                <label for="priority">Priority</label>
+                <select name="priority" id="priority" class="form-control" ng-model="controller.issue.priority" ng-required="isAdmin || controller.project.Lead.Id == userId">
+                    <option ng-repeat="projectPriority in controller.priorities" value="{{projectPriority.Id}}">{{projectPriority.Name}}</option>
+                </select>
+                <span ng-show="form.priority.$error.required" class="help-block">Priority is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.title.$error.required }">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" ng-model="controller.issue.title" ng-required="isAdmin || controller.project.Lead.Id == userId" />
+                <span ng-show="form.title.$error.required" class="help-block">Title is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.description.$error.required }">
+                <label for="description">Description</label>
+                <textarea name="description" style="resize: vertical" id="description" class="form-control" ng-model="controller.issue.description" ng-required="isAdmin || controller.project.Lead.Id == userId"></textarea>
+                <span ng-show="form.description.$error.required" class="help-block">Description is required</span>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || controller.dataLoading" class="btn btn-primary">Edit </button>
+        </div>
+    </form>
+</div>
