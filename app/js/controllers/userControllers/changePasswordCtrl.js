@@ -13,10 +13,10 @@ app.controller('ChangePasswordCtrl', ['UserServices', 'NotificationsManager', '$
 
         UserServices.ChangePassword(passwords)
             .then(function () {
-              //  NotificationsManager.showSuccessNotification('Password successfully changed!');
+                NotificationsManager.success('Password successfully changed!');
                 $location.path('/');
             }, function() {
-              //  NotificationsManager.showErrorNotification('An error occurred while changing password!');
+               NotificationsManager.error('An error occurred while changing password!');
             });
     }
 }]);

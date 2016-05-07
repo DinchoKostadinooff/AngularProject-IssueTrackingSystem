@@ -1,51 +1,50 @@
 app.controller('AddIssueController', ['IssuesServices', 'ProjectServices', 'UserServices', '$location', '$routeParams', function (IssuesServices, ProjectServices, UserServices, $location, $routeParams) {
-    var ctrl = this;
-    ctrl.add = addIssue;
-    ctrl.users = [];
-    ctrl.project = {};
+    var controller = this;
+    controller.add = add;
+    controller.users = [];
+    controller.project = {};
 
     UserServices.GetAll().then(function(response) {
-        ctrl.users = response.data;
+        controller.users = response.data;
     });
 
+    var projectId = $routeParams.id;
+    ProjectServices.GetById(projectId).then(function(response) {
+        controller.project = response.data;
 
-    function addIssue() {
-        ctrl.dataLoading = true;
+        if (sessionStorage.getItem('checkIsAdmin') !== 'true' && controller.project.Lead.Id !== sessionStorage.getItem('id')) {
+            $location.path('/projects/' + controller.project.Id);
+        }
+    });
 
-        var issue = {
-            Title: ctrl.issue.title,
-            DueDate: ctrl.issue.duedate,
-            Description: ctrl.issue.description,
+    function add() {
+        controller.dataLoading = true;
+
+        var issueForAdding = {
+            Title: controller.issue.title,
+            DueDate: controller.issue.duedate,
+            Description: controller.issue.description,
             ProjectId: projectId,
-            AssigneeId: ctrl.issue.assignee,
-            PriorityId: ctrl.issue.priority
+            AssigneeId: controller.issue.assignee,
+            PriorityId: controller.issue.priority
         };
 
-        var splitLabels = ctrl.issue.labelsString.split(' ');
-        issue.labels = [];
+        var labelsSplit = controller.issue.labelsString.split(' ');
+        issueForAdding.labels = [];
 
-        for (var i = 0; i < splitLabels.length; i++) {
-            issue.labels.push({ Name: splitLabels[i] });
+        for (var i = 0; i < labelsSplit.length; i++) {
+            issueForAdding.labels.push({ Name: labelsSplit[i] });
         }
 
-        var projectId = $routeParams.id;
-        ProjectServices.GetById(projectId).then(function(response) {
-            ctrl.project = response.data;
-
-            if (sessionStorage.getItem('checkIsAdmin') !== 'true' && ctrl.project.Lead.Id !== sessionStorage.getItem('id')) {
-                $location.path('/projects/' + ctrl.project.Id);
-            }
-        });
-
-        IssuesServices.Create(issue)
+        IssuesServices.Create(issueForAdding)
             .then(function (response) {
                 if (response.success) {
                     $location.path('/');
                 } else {
-                    ctrl.dataLoading = false;
+                    controller.dataLoading = false;
                 }
 
-                $location.path('/projects/' + ctrl.project.Id)
+                $location.path('/projects/' + controller.project.Id)
             });
     }
 }]);

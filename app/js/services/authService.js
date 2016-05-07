@@ -22,14 +22,14 @@ app.factory('AuthService', ['NotificationsManager', '$http', '$cookieStore', '$r
                 $location.path('/');
             },
             function () {
-                //NotificationsManager.showErrorNotification('An error occurred while logging in!')
+                NotificationsManager.error('An error occurred while logging in!')
             }
         );
     }
 
     function Logout(){
         clearCredentials();
-       // NotificationsManager.showSuccessNotification('Logout successful!');
+        NotificationsManager.success('Logout successful!');
         $location.path('/');
     }
 

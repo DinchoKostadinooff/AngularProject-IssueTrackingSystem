@@ -3,9 +3,7 @@ var app = angular.module('IssueTrackingSystem', ['ngRoute', 'ngCookies']);
 app.baseUrl = 'http://softuni-issue-tracker.azurewebsites.net';
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/', {
-            templateUrl: "views/sharedViews/home.html"
-        })
+       
         .when('/login', {
             controller: 'LoginCtrl',
             templateUrl: 'views/userViews/loginView.html',

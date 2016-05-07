@@ -11,10 +11,10 @@ app.controller('RegisterCtrl', ['UserServices', 'AuthService', 'NotificationsMan
         };
 
         UserServices.Create(dataForRegistration).then(function() {
-               // NotificationsManager.showSuccessNotification('Registration successful!');
+               NotificationsManager.success('Registration successful!');
             AuthenticationService.Login(dataForRegistration.Email, dataForRegistration.Password);
         }, function() {
-               // NotificationsManager.showErrorNotification('Registration failed!');
+                NotificationsManager.success('Registration failed!');
             }
         );
     }
